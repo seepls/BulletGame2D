@@ -59,9 +59,9 @@ public class Player{
             g.setColr(color1);
             g.fillOval(x-r,y-r,2*r,2*r);
             g.setStroke(new BasicStroke(3));
-            
-                
-            
+            g.setColor(color1.darker());
+            g.drawOval(x-r,y-r,2*r,2*r); //boundary 
+            g.setStroke(new BasicStroke(1));
             
       }
 }
