@@ -13,6 +13,8 @@ public class Player{
       private boolean up;
       private boolean down;
       private int lives;
+      private Color color1;
+      private Color color2;
       
       //CONSTRUCTOR
       public player{
@@ -23,6 +25,8 @@ public class Player{
             dy =0;
             speed = 5 ;
             lives = 3 ;
+            color1 =Color.WHITE ;
+            color2 = Color.RED; // the color when we are hit 
            }
       //FUNCTIONS 
       public void update(){
@@ -52,5 +56,12 @@ public class Player{
             
       }
       public void draw (Graphics2D g){
+            g.setColr(color1);
+            g.fillOval(x-r,y-r,2*r,2*r);
+            g.setStroke(new BasicStroke(3));
+            
+                
+            
+            
       }
 }
