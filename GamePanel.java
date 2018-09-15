@@ -11,6 +11,7 @@ private boolean running;
 private BufferedImage image;
 private Graphics2D g;
 private int FPS = 30;
+private double averageFPS;
 
 
 public GamePanel(){
@@ -38,12 +39,15 @@ public void run(){
   
   int frameCount = 0 ;
   int maxFrameCount =30;
+  long targetTime = 1000/FPS;
   
            //game loop
                while(running){
+                         startTime = System.nanoTime();// builtin function gets the current time in nanoseconds
                          gameUpdate();
                          gameRender();
                          gameDraw();
+                         URDTimeMillis = (System.nanoTime()-startTime())/1000000;
                         }
                  }
 
