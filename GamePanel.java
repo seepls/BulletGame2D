@@ -35,7 +35,7 @@ public void run(){
   long startTime ;
   long URDTimeMillis;
   long waitTime;
-  long totalTime;
+  long totalTime=0;
   
   int frameCount = 0 ;
   int maxFrameCount =30;
@@ -48,6 +48,17 @@ public void run(){
                          gameRender();
                          gameDraw();
                          URDTimeMillis = (System.nanoTime()-startTime())/1000000;
+                         waitTime =targetTime -URDTimeMillis ;
+                          try{
+                            Thread.sleep(waitTime);
+                           }catch(Exception e){}
+                          totalTime+=System.nanoTime()-startTime;
+                          frameCount++;
+                          if(frameCount=maxFrameCount){
+                            averageFPS=1000 /((totalTime/frameCount)/1000000);
+                            frameCount = 0 ;
+                            totalTime = 0 ;
+                          }
                         }
                  }
 
