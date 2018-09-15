@@ -10,6 +10,7 @@ private boolean running;
 
 private BufferedImage image;
 private Graphics2D g;
+private int FPS = 30;
 
 
 public GamePanel(){
@@ -29,6 +30,15 @@ public void run(){
   running = true ;
   image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
   g = (Graphics2D)image.getGraphics();
+  
+  long startTime ;
+  long URDTimeMillis;
+  long waitTime;
+  long totalTime;
+  
+  int frameCount = 0 ;
+  int maxFrameCount =30;
+  
            //game loop
                while(running){
                          gameUpdate();
