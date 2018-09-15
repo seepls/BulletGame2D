@@ -26,6 +26,20 @@ public class Player{
            }
       //FUNCTIONS 
       public void update(){
+            if(left){
+                  dx = -speed ;
+            }
+            if(right){
+                  dx= +speed;
+            }
+            if(up){
+                  dy = -speed;
+            }
+            if(down){
+                  dy= +speed;
+            }
+            x+=dx;
+            y+=dy;
             
       }
       public void draw (Graphics2D g){
