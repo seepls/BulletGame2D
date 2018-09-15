@@ -1,6 +1,9 @@
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.*;
+import java.awt.event.*;
+
+
 public class GamePanel extends JPanel implements Runnable,KeyListener{
 public static int WIDTH = 400;
 public static int HEIGHT =400;
@@ -95,8 +98,33 @@ g2.dispose();
 
 public void keyTyped(KeyEvent key){}
 public void keyPressed(KeyEvent key){
+  int keyCode = key.getKeyCode();
+  if(keyCode ==KeyEvent.VK_LEFT ){
+    player.setLeft(true) ;
+  }
+  if(keyCode ==KeyEvent.VK_RIGHT ){
+    player.setRight(true) ;
+  }
+  if(keyCode ==KeyEvent.VK_DOWN ){
+    player.setDown(true) ;
+  }
+  if(keyCode ==KeyEvent.VK_UP ){
+    player.setUp(true) ;
+  }
 }
-public void keyReleased(KeyEvent key){}
+public void keyReleased(KeyEvent key){
+if(keyCode ==KeyEvent.VK_LEFT ){
+    player.setLeft(false) ;
+  }
+  if(keyCode ==KeyEvent.VK_RIGHT ){
+    player.setRight(false) ;
+  }
+  if(keyCode ==KeyEvent.VK_DOWN ){
+    player.setDown(false) ;
+  }
+  if(keyCode ==KeyEvent.VK_UP ){
+    player.setUp(false) ;
+  }}
   
   
   
