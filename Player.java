@@ -29,6 +29,13 @@ public class Player{
             color2 = Color.RED; // the color when we are hit 
            }
       //FUNCTIONS 
+      
+      public void setLeft(boolean b){left = b ;}
+      public void setRight(boolean b){right = b ;}
+      public void setDown(boolean b){down = b ;}
+      public void setUp(boolean b){up = b ;}
+      
+      
       public void update(){
             if(left){
                   dx = -speed ;
