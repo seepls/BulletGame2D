@@ -94,7 +94,8 @@ g2.dispose();
 }
 
 public void keyTyped(KeyEvent key){}
-public void keyPressed(KeyEvent key){}
+public void keyPressed(KeyEvent key){
+}
 public void keyReleased(KeyEvent key){}
   
   
