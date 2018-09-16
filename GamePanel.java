@@ -16,6 +16,7 @@ private Graphics2D g;
 private int FPS = 30;
 private double averageFPS;
 public static Player player ;
+public static ArrayList <Bullet> bullets ;
 
 
 
@@ -31,8 +32,6 @@ super.addNotify();
 if(thread== null){   thread = new Thread(this) ;thread.start();}
   addKeyListener(this);
   
-     
-  
 }
 
 public void run(){ 
@@ -40,6 +39,8 @@ public void run(){
   image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
   g = (Graphics2D)image.getGraphics();
   player = new Player();
+  bullets = new ArrayList<Bullet>();
+ 
   
   long startTime ;
   long URDTimeMillis;
@@ -73,6 +74,13 @@ public void run(){
 
 private void gameUpdate(){
 player.update();
+for(int i = 0 ; i < bullets.size() ; i++){
+  boolean remove  = bullets .get(i).update();
+  if(remove){
+    bullets.remove(i);
+    i--;
+  }
+}
 }
 
 
@@ -83,6 +91,9 @@ private void gameRender()
         g.setColor(Color.BLACK);
         g.drawString("TEST",100,100);
          player.draw(g);
+        for(int i =0 ; i< bullets.size(); i++){
+          bullets.draw();
+        }
 
       
     }
@@ -111,6 +122,9 @@ public void keyPressed(KeyEvent key){
   if(keyCode ==KeyEvent.VK_UP ){
     player.setUp(true) ;
   }
+  if(keyCode == KeyEvent.VK_Z){
+    player.setFiring(true);
+  }
 }
 public void keyReleased(KeyEvent key){
 if(keyCode ==KeyEvent.VK_LEFT ){
@@ -124,7 +138,13 @@ if(keyCode ==KeyEvent.VK_LEFT ){
   }
   if(keyCode ==KeyEvent.VK_UP ){
     player.setUp(false) ;
-  }}
+  }
+  if(keyCode == KeyEvent.VK_Z){
+    player.setFiring(false);
+  }
+
+
+}
   
   
   
