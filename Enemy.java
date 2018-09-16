@@ -48,5 +48,25 @@ public class Enemy{
    public double gety(){return y ;}  
    public double getr(){return r ;} 
    
+   public boolean isDead(){
+      return dead;
+   }
+   
+   public void hit(){
+      health--;
+      if(health <= 0 ) {dead = true ;}
+   }
+   
+   public void update(){
+      x+= dx ;
+      y+= dy ;
+      
+   }
+   
+   public void draw(Graphics2D g){
+   }
+   
+   
+   
    
 }
