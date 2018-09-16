@@ -2,6 +2,8 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.event.*;
+import java.util.*; // for array list 
+
 
 
 public class GamePanel extends JPanel implements Runnable,KeyListener{
