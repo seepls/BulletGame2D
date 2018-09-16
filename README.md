@@ -9,3 +9,6 @@ using the inbulit : System.nanoTime() // gives the current time in millisecond ;
 in the next step we move to create players and take user input from the keyboard to move him around.
 
 next we create bullets .
+Z for hitting
+created enemies .
+similar point size :  distance formula used to check if collision .
