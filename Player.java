@@ -8,10 +8,16 @@ public class Player{
       private int dx;
       private int dy ;
       private int speed;
+      
       private boolean left;
       private boolean right;
       private boolean up;
       private boolean down;
+      
+      private boolean firing ;
+      private long firingTimer ;
+      private long firingDelay ;
+      
       private int lives;
       private Color color1;
       private Color color2;
@@ -26,7 +32,14 @@ public class Player{
             speed = 5 ;
             lives = 3 ;
             color1 =Color.WHITE ;
-            color2 = Color.RED; // the color when we are hit 
+            color2 = Color.RED; // the color when we are hit
+            
+            firing = false ;
+            firingTimer = System.nanoTime() ;
+            firingDelay = 200 ;
+            
+            
+            
            }
       //FUNCTIONS 
       
@@ -58,6 +71,17 @@ public class Player{
             if(y> GamePanel.HEIGHT -r) y = GamePanel.HEIGHT -r ;
             dx =0 ;
             dy = 0;
+            
+            
+            if(firing){
+                  long elapsed = (System.nanoTime() -firingTimer )/1000000;
+                  if(elapsed >firingDelay){
+                         GamePanel.bullets.add(new Bullet(270 , x, y ));
+                         firingTimer = System.nanoTime();
+                        
+                  }
+                  
+            }
             
             
             
