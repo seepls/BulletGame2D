@@ -4,7 +4,7 @@ public class Bullet{
 private double x;
 private double y;
 private int r ;
-
+ 
 private double dx;
 private double dy;
 private double rad;
