@@ -44,8 +44,9 @@ public class Enemy{
    }
    
    //FUNCTIONS
-      
-   
+   public double getx(){return x ;}
+   public double gety(){return y ;}  
+   public double getr(){return r ;} 
    
    
 }
