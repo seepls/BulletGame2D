@@ -94,7 +94,7 @@ private void gameRender()
         g.drawString("TEST",100,100);
          player.draw(g);
         for(int i =0 ; i< bullets.size(); i++){
-          bullets.draw();
+          bullets.get(i).draw(g);
         }
 
       
@@ -110,6 +110,8 @@ g2.dispose();
 }
 
 public void keyTyped(KeyEvent key){}
+  
+  
 public void keyPressed(KeyEvent key){
   int keyCode = key.getKeyCode();
   if(keyCode ==KeyEvent.VK_LEFT ){
