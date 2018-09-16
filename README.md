@@ -7,3 +7,5 @@ so the next ..
 we set up the FramePerSecond (FPS)
 using the inbulit : System.nanoTime() // gives the current time in millisecond ;
 in the next step we move to create players and take user input from the keyboard to move him around.
+
+next we create bullets .
