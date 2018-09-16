@@ -60,10 +60,26 @@ public class Enemy{
    public void update(){
       x+= dx ;
       y+= dy ;
+      if(!ready){
+         if(x>r && x <GamePanel.WIDTH -r && y>r && y<GamePanel.HEIGHT -r ){
+            ready = true ;
+         }
+      }
+          
+      if(x <r  && dx <0 )dx = -dx ;
+      if(y <r && dy <0) dy= - dy ;
+      if(x > GamePanel.WIDTH -r  && dx > 0) dx = -dx ;
+      if(y > GamePanel.HEIGHT - r && dy > 0 ) dy = -dy ;
       
    }
    
    public void draw(Graphics2D g){
+      g.setColor(color1);
+      g.fillOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+      g.setStroke(new BasicStroke(3));
+      g.setColor(color1.darker());
+      g.drawOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+       g.setStroke(new BasicStroke(1));
    }
    
    
