@@ -48,6 +48,8 @@ public class Player{
       public void setDown(boolean b){down = b ;}
       public void setUp(boolean b){up = b ;}
       
+      public void setFiring (boolean b){firing = b ;}
+      
       
       public void update(){
             if(left){
