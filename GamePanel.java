@@ -90,8 +90,9 @@ private void gameRender()
       {
          g.setColor(Color.WHITE); 
         g.fillRect(0,0,WIDTH,HEIGHT);
-        g.setColor(Color.BLACK);
-        g.drawString("TEST",100,100);
+        g.setColor(Color.BLACK); 
+        g.drawString("TEST",10,10); // test loops to check functionality 
+        g.drawString(" num bullets " + bullets.size(),10,20); // this is awesome you can actually check how many bullets on screen 
          player.draw(g);
         for(int i =0 ; i< bullets.size(); i++){
           bullets.get(i).draw(g);
