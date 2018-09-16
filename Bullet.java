@@ -26,6 +26,10 @@ public Bullet(double angle , int  x ,int  y){ // giving as parameters angle and 
   
   }
 //FUNCTIONS 
+ 
+public double getx(){return x ;}
+public double gety(){return y ;}
+public double getr(){return r ;}
 public boolean  update(){
   x+= dx ;
   y+=dy;
