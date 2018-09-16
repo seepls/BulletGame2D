@@ -19,6 +19,7 @@ private int FPS = 30;
 private double averageFPS;
 public static Player player ;
 public static ArrayList <Bullet> bullets ;
+public static ArrayList<Enemy> enemies;
 
 
 
@@ -42,6 +43,10 @@ public void run(){
   g = (Graphics2D)image.getGraphics();
   player = new Player();
   bullets = new ArrayList<Bullet>();
+  enemies = new ArrayList<Enemy>();
+  for(int i = 0 ; i <5 ; i++){
+    enemies.add(new Enemy(1,1));
+  }
  
   
   long startTime ;
@@ -75,7 +80,9 @@ public void run(){
                  }
 
 private void gameUpdate(){
+  //player update 
 player.update();
+  //bullet update
 for(int i = 0 ; i < bullets.size() ; i++){
   boolean remove  = bullets .get(i).update();
   if(remove){
@@ -83,6 +90,48 @@ for(int i = 0 ; i < bullets.size() ; i++){
     i--;
   }
 }
+  
+  //enemy update
+
+for( int i = 0 ; i < enemies.size() ; i++){
+  enemies.get(i).update();
+  
+}
+  //bullet enemy collison 
+  for(int i = 0 ; i < bullet.size() ;i++){
+    Bullet b = bullets.get(i);
+    double bx = b.getx();
+    double by = b.gety():
+    double br = b.getr();
+    for(int j = 0 ; j < enemies.size() ; j++){
+      Enemy e = enemies.get(j);
+      double ex = enemies.getx();
+      double ey = enemies.gety();
+      double er = enemies.getr () ;
+      double dx  = bx- ex ;
+      double dy = by - ey ;
+      double dist = Math.sqrt(dx*dx + dy*dy) ;
+      if(dist < br+er ){
+        e.hit();
+        bullets.remove(i);
+        i--;
+        break;
+        
+      }
+    }  
+  }
+  
+  //check dead enemies 
+  for(int i = 0 ;i <enemies.size(); i++){
+    if(enemies.get(i).isDead()){
+      enemies.remove(i);
+      i--;
+      
+    }
+  }
+  
+  
+
 }
 
 
@@ -91,11 +140,19 @@ private void gameRender()
          g.setColor(Color.WHITE); 
         g.fillRect(0,0,WIDTH,HEIGHT);
         g.setColor(Color.BLACK); 
+        //TEST STRINGS
         g.drawString("TEST",10,10); // test loops to check functionality 
         g.drawString(" num bullets " + bullets.size(),10,20); // this is awesome you can actually check how many bullets on screen 
-         player.draw(g);
+        // draw player
+        player.draw(g);
+        // draw bullets
         for(int i =0 ; i< bullets.size(); i++){
           bullets.get(i).draw(g);
+        }
+        // draw enemies
+        for( int i = 0 ; i < enemies.size() ; i++){
+            enemies.get(i).draw(g);
+  
         }
 
       
