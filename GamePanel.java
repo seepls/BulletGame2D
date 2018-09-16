@@ -15,7 +15,7 @@ private BufferedImage image;
 private Graphics2D g;
 private int FPS = 30;
 private double averageFPS;
-private Player player ;
+public static Player player ;
 
 
 
