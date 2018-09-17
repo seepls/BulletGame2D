@@ -7,6 +7,8 @@ import java.util.*; // for array list
 
 
 public class GamePanel extends JPanel implements Runnable,KeyListener{
+  
+  //FEILDS
 public static int WIDTH = 400;
 public static int HEIGHT =400;
 
@@ -20,7 +22,11 @@ private double averageFPS;
 public static Player player ;
 public static ArrayList <Bullet> bullets ;
 public static ArrayList<Enemy> enemies;
-
+private long waveStartTimer ;
+private long waveStartTimerDiff ;
+private int waveNumber ;
+private boolean waveStart;
+private int waveDelay =1500 ;
 
 
 public GamePanel(){
@@ -41,13 +47,19 @@ public void run(){
   running = true ;
   image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
   g = (Graphics2D)image.getGraphics();
+  g.setRenderingHint(
+    RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); // ONLY FOR THE GRAPHICS SMOOTHENING
+  //IF YOU WANNA DO FOR THE TEXT SMOOTHENING YOU ALSO DO FOR THAT 
+  g.setRenderingHint(
+    RenderingHints.KEY_TEXT_ANTIALIASING , RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
   player = new Player();
   bullets = new ArrayList<Bullet>();
   enemies = new ArrayList<Enemy>();
-  for(int i = 0 ; i <5 ; i++){
-    enemies.add(new Enemy(1,1));
-  }
  
+  waveStartTimer = 0 ;
+  waveStartTimerDiff = 0 ;
+  waveNumber = 0 ;
+  waveStart = true ;
   
   long startTime ;
   long URDTimeMillis;
@@ -80,6 +92,26 @@ public void run(){
                  }
 
 private void gameUpdate(){
+  
+  //new wave 
+  if(waveStartTimer == 0  && enemies.size() == 0 ) {
+    waveNumber++ ; 
+    waveStart= false ;
+    waveStartTimer =System.nanoTime();
+  }else {
+    waveStartTimerDiff = (System.nanoTime()  - waveStartTimer)/1000000 ;
+    
+    if(waveStartTimerDiff > waveDelay){
+      waveStart = true ;
+      waveStartTimer = 0 ;
+      waveStartTimerDiff = 0 ;
+    }
+     
+  }
+    
+  
+  //create enemies 
+  
   //player update 
 player.update();
   //bullet update
