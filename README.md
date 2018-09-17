@@ -13,3 +13,7 @@ Z for hitting
 created enemies .
 similar point size :  distance formula used to check if collision .
 wave spawning system for the enemies .
+set up lives as well visible on top left .
+
+
+now we have done nothing yet when the enemies and player collide , so we do that now . :) 
