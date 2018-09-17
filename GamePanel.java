@@ -208,7 +208,12 @@ private void gameRender()
   
         //draw player lives 
         for(int i =0 ; i < player.getLives();i++){
-          
+          g.setColor(Color.WHITE );
+          g.fillOval(20+20*i ,20,player.getr()*2 ,player.getr()*2 );
+          g.setStroke(new BasicStroke(3));
+          g.setColor (Color.WHITE.darker());
+          g.drawOval(20+20*i ,20,player.getr()*2 ,player.getr()*2 );
+          g.setStroke(new BasicStroke(1));
         }
           
   
