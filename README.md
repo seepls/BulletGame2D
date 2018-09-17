@@ -12,3 +12,4 @@ next we create bullets .
 Z for hitting
 created enemies .
 similar point size :  distance formula used to check if collision .
+wave spawning system for the enemies .
