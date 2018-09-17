@@ -100,14 +100,18 @@ private void gameUpdate(){
     waveStartTimer =System.nanoTime();
   }else {
     waveStartTimerDiff = (System.nanoTime()  - waveStartTimer)/1000000 ;
-    
-    if(waveStartTimerDiff > waveDelay){
-      waveStart = true ;
-      waveStartTimer = 0 ;
-      waveStartTimerDiff = 0 ;
-    }
-     
+      if(waveStartTimerDiff > waveDelay){
+            waveStart = true ;
+             waveStartTimer = 0 ;
+             waveStartTimerDiff = 0 ;
+      }
   }
+  if(waveStart && enemies.size() == 0 ){
+    createNewEnemies() ;
+  }
+    
+     
+  
     
   
   //create enemies 
@@ -168,24 +172,47 @@ for( int i = 0 ; i < enemies.size() ; i++){
 
 
 private void gameRender()
-      {
-         g.setColor(Color.WHITE); 
+      {   // create back ground
+         g.setColor(new Color(0,100,255)); 
         g.fillRect(0,0,WIDTH,HEIGHT);
-        g.setColor(Color.BLACK); 
+        /*g.setColor(Color.BLACK); 
         //TEST STRINGS
         g.drawString("TEST",10,10); // test loops to check functionality 
         g.drawString(" num bullets " + bullets.size(),10,20); // this is awesome you can actually check how many bullets on screen 
+        */
+  
         // draw player
         player.draw(g);
+  
         // draw bullets
         for(int i =0 ; i< bullets.size(); i++){
           bullets.get(i).draw(g);
         }
+  
         // draw enemies
         for( int i = 0 ; i < enemies.size() ; i++){
             enemies.get(i).draw(g);
-  
         }
+        
+        //draw wavenumber
+        if(waveStartTimer!=0){
+          g.setFont(new Font("Century Gothic" ,Font.PLAIN ,18) );
+          String s = "-WAVE  "+waveNumber + " -" ;
+          int length = (int) g.getFontMetrics().getStringBounds(s,g).getWidth();
+          int alpha = (int)   (255 * Math.sin(3.14*waveStartTimerDiff/waveDelay ));
+          if(alpha >255)alpha = 255 ;
+          g.setColor (new Color(255,255,255,alpha ));
+          g.drawString(s,WIDTH/2 - length/2 ,HEIGHT / 2):
+          
+        }
+  
+        //draw player lives 
+        for(int i =0 ; i < player.getLives();i++){
+          
+        }
+          
+  
+        
 
       
     }
@@ -197,6 +224,22 @@ private void gameDraw(){
 Graphics g2 =this.getGraphics();
 g2.drawImage(image,0,0,null);
 g2.dispose();
+}
+  
+private void creatNewEnemies(){
+  enemies.clear();
+  Enemy e ;
+  if(waveNumber == 1 ){
+    for(int i = 0 ; i <4 ; i++){
+      enemies.add(new Enemy(1,1));
+    }
+  if(waveNumber == 2 ){
+    for(int i = 0 ; i <8 ; i++){
+      enemies.add(new Enemy(1,1));
+    }
+  
+    
+  }
 }
 
 public void keyTyped(KeyEvent key){}
