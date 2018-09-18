@@ -58,7 +58,7 @@ public class Player{
       public int getLives(){return lives;}
       
       public boolean isRecovering(){
-            recovering;
+            return recovering;
             
       }
       
