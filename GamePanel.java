@@ -160,6 +160,10 @@ for( int i = 0 ; i < enemies.size() ; i++){
   //check dead enemies 
   for(int i = 0 ;i <enemies.size(); i++){
     if(enemies.get(i).isDead()){
+      Enemy e = enemies.get(i);
+      player.addScore();
+      
+      score++;
       enemies.remove(i);
       i--; }
   }
@@ -236,7 +240,11 @@ private void gameRender()
           g.drawOval(20+20*i ,20,player.getr()*2 ,player.getr()*2 );
           g.setStroke(new BasicStroke(1));
         }
-          
+  
+        // draw player score 
+      g.setColor(Color.WHITE);
+      g.setFont(new Font("CENTURY GOTHIC",Font.PLAIN, 14));
+      g.drawString("Score :" + player.getScore() ,WIDTH- 100,10 );
   
         
 
