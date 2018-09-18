@@ -161,7 +161,7 @@ for( int i = 0 ; i < enemies.size() ; i++){
   for(int i = 0 ;i <enemies.size(); i++){
     if(enemies.get(i).isDead()){
       Enemy e = enemies.get(i);
-      player.addScore();
+      player.addScore(e.getType() + e.getRank());
       
       score++;
       enemies.remove(i);
