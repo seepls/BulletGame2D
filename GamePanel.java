@@ -165,6 +165,26 @@ for( int i = 0 ; i < enemies.size() ; i++){
   }
   
   //player - enemy collision 
+  if(!player.isRecovering()){
+    int px = player.getx();
+    int py = player.gety();
+    int pr = player.getr():
+    for(int i = 0 ; i <enemies.size() ; i++){
+      Enemy e =enemies.get(i);
+      double ex = e.getx();
+      double ey = e.gety();
+      double er = e.getr();
+      
+      double dx = px - ex ;
+      double dy = py - ey ; 
+      double dist = Math.sqrt(dx*dx + dy*dy) ;
+      if(dist < pr + pe){
+        player.loseLife();
+        
+      }
+      
+    }
+  }
   
   
   
