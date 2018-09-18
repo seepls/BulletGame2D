@@ -26,6 +26,9 @@ public class Player{
       private Color color1;
       private Color color2;
       
+      private int score ;
+      
+      
       //CONSTRUCTOR
       public player{
             x = GamePanel.WIDTH/2; //thats why we made WIDTH and HEIGHT as public so that public functions like the one now can use them 
@@ -45,7 +48,7 @@ public class Player{
             recovering = false;
             recoveryTimer = 0;
             
-            
+            score = 0 ;
             
             
             
@@ -54,6 +57,8 @@ public class Player{
       public int getx(){ return x ; }
       public int gety(){ return y;}
       public int getr(){ return r ;}
+      
+      public int getScore(){return score ;}
       
       public int getLives(){return lives;}
       
@@ -69,6 +74,8 @@ public class Player{
       public void setUp(boolean b){up = b ;}
       
       public void setFiring (boolean b){firing = b ;}
+      
+      public void addScore(int i ){ score+ = i ;}
       
       public void loseLife(){
             lives--;
