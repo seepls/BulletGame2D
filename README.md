@@ -17,3 +17,9 @@ set up lives as well visible on top left .
 
 
 now we have done nothing yet when the enemies and player collide , so we do that now . :) 
+
+now when the player and enemy collide , we reduce the life of the player .
+change the color to RED when hit : for a while .
+also we added the score at the right top . 
+
+next we are going to PowerUp . ! 
