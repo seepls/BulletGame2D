@@ -23,3 +23,9 @@ change the color to RED when hit : for a while .
 also we added the score at the right top . 
 
 next we are going to PowerUp . ! 
+
+in power up ; we add 3 kinds : 
+1st increases life ; 
+and the other 2 increase poer by 1 and 2 ; 
+
+next we set up their interaction ( e. i player and powerups ) 
