@@ -22,6 +22,9 @@ private double averageFPS;
 public static Player player ;
 public static ArrayList <Bullet> bullets ;
 public static ArrayList<Enemy> enemies;
+public static ArrayList<PowerUp> powerups;
+  
+  
 private long waveStartTimer ;
 private long waveStartTimerDiff ;
 private int waveNumber ;
@@ -55,6 +58,7 @@ public void run(){
   player = new Player();
   bullets = new ArrayList<Bullet>();
   enemies = new ArrayList<Enemy>();
+  powerups = new ArrayList<PowerUp>();
  
   waveStartTimer = 0 ;
   waveStartTimerDiff = 0 ;
@@ -133,6 +137,18 @@ for( int i = 0 ; i < enemies.size() ; i++){
   enemies.get(i).update();
   
 }
+  
+  //powerup update 
+  for(int i = 0 ; i <powerups.size() ; i++){
+    boolean remove = powerups.get(i).update();
+     if ( remove){
+       powerups.remove(i);
+       i--;
+       
+     }
+    
+  }
+  
   //bullet enemy collison 
   for(int i = 0 ; i < bullet.size() ;i++){
     Bullet b = bullets.get(i);
@@ -161,6 +177,13 @@ for( int i = 0 ; i < enemies.size() ; i++){
   for(int i = 0 ;i <enemies.size(); i++){
     if(enemies.get(i).isDead()){
       Enemy e = enemies.get(i);
+      
+      //roll for powerup
+      double rand = Math.random();
+      if(rand < 0.001)powerups.add(new PowerUp(1,e.getx(),e.gety()));
+       else if(rand < 0.02 ){powerups.add( new PowerUp(3, e.getx() , e.gety()));}
+      else if( rand < 0.120){ powerups.add( new PowerUp(2 , e.getx() , e.gety()));}
+      
       player.addScore(e.getType() + e.getRank());
       
       score++;
@@ -217,6 +240,13 @@ private void gameRender()
         // draw enemies
         for( int i = 0 ; i < enemies.size() ; i++){
             enemies.get(i).draw(g);
+        }
+  
+      // draw powerups
+        for( int i = 0 ;i <powerups.size() ; i++){
+          powerups.get(i).draw(g);
+           
+
         }
         
         //draw wavenumber
