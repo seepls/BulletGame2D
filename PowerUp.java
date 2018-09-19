@@ -48,8 +48,14 @@ public class PowerUp{
   
   }
   public void draw(Graphics2D G){
-  g.setColor(color1);}
-  g.fillRect(
+  g.setColor(color1);
+  g.fillRect((int) ( x-r) , (int) ( y-r) , 2*r , 2*r );
+  
+  g.setStroke(new BasicStroke(3));
+  g.setColor( color1.darker());
+  g.drawRect((int) ( x-r) , (int) ( y-r) , 2*r , 2*r );
+   g.setStroke(new BasicStroke(1));
+  }
 
   
 
