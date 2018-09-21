@@ -212,7 +212,32 @@ for( int i = 0 ; i < enemies.size() ; i++){
       
     }
   }
-  
+  //player powerup collision
+  int px =player.getx();
+  int py = player.gety();
+  int pr = player.getr();
+  for( int i = 0 ; i <powerups.size();i++){
+    PowerUp p =powerups.get(i);
+    double x =p.getx();
+    double y = p.gety();
+    double r = p.getr();
+    double dx = px - x ;
+    double dy = py - y ;
+    double dist = Math.sqrt(dx*dx + dy*dy);
+    
+    //collected powerUps 
+      if(dist < pr + r){
+        
+        int type = p.getType() ;
+        if(type == 1){
+        }player.gainLife();
+        powerups.remove(i);
+        i-- ;
+        
+      }
+    
+  }
+      
   
   
 
