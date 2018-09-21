@@ -24,6 +24,7 @@ public class Enemy{
    public Enemy(int type , int rank ){
       this.type= type ;
       this.rank = rank ;
+      //default enemy 
       if(type == 1 ){
          color1 = Color.BLUE ;
          if(rank == 1){
@@ -32,6 +33,33 @@ public class Enemy{
             health = 1 ;   
          }
       }
+      //stronger and faster default
+      if(type == 2 ){
+         color1= Color.RED;
+         if(rank == 1){
+            speed = 3 ;
+            r = 6 ;
+            health = 2 ;
+            
+         }
+      }
+      
+      //slow but hard to kill enemy 
+      if(type==3){
+         color1 = Color.GREEN ;
+         if(rank == 1){
+            speed =1.5;
+            r =5 ;
+            health = 5 ;
+            
+         }
+      }
+      
+      
+      
+      
+         
+      
       x = Math.random()*GamePanel.WIDTH /2  + GamePanel.WIDTH / 4 ;
       y = -r ;
       
