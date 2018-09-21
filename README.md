@@ -29,3 +29,7 @@ in power up ; we add 3 kinds :
 and the other 2 increase poer by 1 and 2 ; 
 
 next we set up their interaction ( e. i player and powerups ) 
+
+now created more enemies , differing with level and power and health ...
+
+final touch up remaining!!! pretty excited . 
