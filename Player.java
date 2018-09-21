@@ -77,6 +77,10 @@ public class Player{
       
       public void addScore(int i ){ score+ = i ;}
       
+      public void gainLife(){
+            lives++ ;
+      }
+      
       public void loseLife(){
             lives--;
             recovering = true ;
