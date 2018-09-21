@@ -27,6 +27,12 @@ public class Player{
       private Color color2;
       
       private int score ;
+      private int powerLevel ; 
+      private int power ;
+      private int[] requiredPower = {1,2,3,4,5};
+      
+      
+       
       
       
       //CONSTRUCTOR
@@ -87,6 +93,19 @@ public class Player{
             recoveryTimer = System.nanoTime();
             
       }
+      public void increasePower(){
+            power+= i ;
+            if( power>= requiredPower[powerLevel]){
+                  powerLevel++;
+            }
+      }
+      
+      public int getPowerLevel(){return powerLevel ;}
+      public int getPower(){ return power ;}
+      public int getRequiredPower(){return requiredPower[powerLevel];  }
+      
+            
+      
       
       
       public void update(){
