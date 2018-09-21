@@ -4,7 +4,7 @@ public class PowerUp{
 // making square shaped poer ups . moving downward only 
   //FIELDS
   private double x ;
-  private double y ;
+  private double y ; 
   private int r ; 
   
   private int type ;
