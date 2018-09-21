@@ -231,6 +231,12 @@ for( int i = 0 ; i < enemies.size() ; i++){
         int type = p.getType() ;
         if(type == 1){
         }player.gainLife();
+        if(type==2){
+          player.increasePower(1);
+        }
+        if (type == 3){
+          player.increasePower(2);
+          {
         powerups.remove(i);
         i-- ;
         
