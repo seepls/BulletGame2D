@@ -183,6 +183,7 @@ for( int i = 0 ; i < enemies.size() ; i++){
       if(rand < 0.001)powerups.add(new PowerUp(1,e.getx(),e.gety()));
        else if(rand < 0.02 ){powerups.add( new PowerUp(3, e.getx() , e.gety()));}
       else if( rand < 0.120){ powerups.add( new PowerUp(2 , e.getx() , e.gety()));}
+      else powerups.add(new PowerUp(1,e.getx(),e.gety()));
       
       player.addScore(e.getType() + e.getRank());
       
@@ -302,6 +303,16 @@ private void gameRender()
           g.setStroke(new BasicStroke(1));
         }
   
+  
+       //draw player power 
+        g.setColor(Color.YELLOW);
+        g.fillRect(20,40,player.getPower()*8 , 8);
+        g.setColor(Color.YELLOW.darker());
+        g.setStroke(new BasicStroke(2));
+  for(int i = 0; i < player.getRequiredPower() ; i++){
+    g.drawRect(20+8*i,40,8,8);
+  }
+         g.setStroke(new BasicStroke(1));
         // draw player score 
       g.setColor(Color.WHITE);
       g.setFont(new Font("CENTURY GOTHIC",Font.PLAIN, 14));
