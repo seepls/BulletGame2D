@@ -32,6 +32,23 @@ public class Enemy{
             r = 5 ;
             health = 1 ;   
          }
+         if(rank ==2){
+            speed = 2 ;
+            r = 10 ; 
+            health = 2 ;
+         }
+         if(rank ==3){
+            speed = 1.5 ;
+            r =15;
+            health = 3 ;
+         }
+         
+         if(rank ==4 ){
+            speed = 1.5 ;
+            r =25;
+            health = 4 ;
+            
+         }
       }
       //stronger and faster default
       if(type == 2 ){
@@ -81,6 +98,19 @@ public class Enemy{
    
    public boolean isDead(){
       return dead;
+   }
+   
+   public void explode(){
+      if(rank >1){
+         int amount = 0;
+         if( type ==1){
+            amount =3 ;
+         }
+         for(int i = 0 ; i <amount ; i++){
+            Enemy e = new Enemy(getType(), getRank()-1);
+            
+         }
+      }
    }
    
    public void hit(){
