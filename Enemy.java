@@ -108,6 +108,8 @@ public class Enemy{
          }
          for(int i = 0 ; i <amount ; i++){
             Enemy e = new Enemy(getType(), getRank()-1);
+            GamePanel.enemies.add(e);
+            
             
          }
       }
