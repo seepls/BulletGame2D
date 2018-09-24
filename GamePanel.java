@@ -190,7 +190,7 @@ for( int i = 0 ; i < enemies.size() ; i++){
       score++;
       enemies.remove(i);
       i--;
-      e.explode();
+      e.explode(e.getx() , e.gety());
     
     }
   }
