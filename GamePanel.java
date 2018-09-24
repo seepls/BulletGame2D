@@ -348,10 +348,14 @@ private void creatNewEnemies(){
     }
   if(waveNumber == 3){
     for(int i = 0 ; i <4 ; i++){
-      enemies.add(new Enemy(2,1));
-    }
+      enemies.add(new Enemy(1,1));}
+      enemies.add(new Enemy(1,2));
+      enemies.add(new Enemy(1,2));
+  }
     for(int i = 0 ; i <4 ; i++){
-      enemies.add(new Enemy(3,1));
+      enemies.add(new Enemy(1,3));
+      enemies.add(new Enemy(1,3));
+      enemies.add(new Enemy(1,4));
     }
   }
     
