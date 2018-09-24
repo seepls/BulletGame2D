@@ -189,7 +189,10 @@ for( int i = 0 ; i < enemies.size() ; i++){
       
       score++;
       enemies.remove(i);
-      i--; }
+      i--;
+      e.explode();
+    
+    }
   }
   
   //player - enemy collision 
