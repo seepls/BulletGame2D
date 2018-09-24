@@ -108,6 +108,16 @@ public class Enemy{
          }
          for(int i = 0 ; i <amount ; i++){
             Enemy e = new Enemy(getType(), getRank()-1);
+            e.x = this.x ; e.y = this.y ;
+            
+            double angle = 0 ;
+            if(!ready){
+               angle = Math.Random() *140 + 20 ;
+            }else {
+               angle = Math.Random()*360 ;
+            }
+            e.rad = Math.toRadians(angle);
+            
             GamePanel.enemies.add(e);
             
             
