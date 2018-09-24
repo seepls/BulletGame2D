@@ -100,7 +100,7 @@ public class Enemy{
       return dead;
    }
    
-   public void explode(){
+   public void explode(double x , double y){
       if(rank >1){
          int amount = 0;
          if( type ==1){
