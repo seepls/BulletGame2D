@@ -33,3 +33,5 @@ next we set up their interaction ( e. i player and powerups )
 now created more enemies , differing with level and power and health ...
 
 final touch up remaining!!! pretty excited . 
+on hitting changing the color to white . for a particulr period of time .
+
