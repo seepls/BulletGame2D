@@ -19,6 +19,10 @@ public class Enemy{
    private boolean ready ;
    private boolean dead;
    
+   private boolean hit ; 
+   private long hitTimer ; 
+   
+   
    
    //CONSTRUCTOR 
    public Enemy(int type , int rank ){
@@ -86,6 +90,9 @@ public class Enemy{
       dy = Math.sin(rad)*speed;
       ready = false ;
       dead = false ;
+      hit = false ;
+      hitTimer = 0 ;
+      
    }
    
    //FUNCTIONS
