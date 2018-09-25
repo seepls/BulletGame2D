@@ -165,6 +165,12 @@ public class Enemy{
    
    public void draw(Graphics2D g){
       if (hit){
+          g.setColor(Color.WHITE );
+          g.fillOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+          g.setStroke(new BasicStroke(3));
+          g.setColor(Color.WHITE.darker());
+          g.drawOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+          g.setStroke(new BasicStroke(1));
       }else{
           g.setColor(color1);
           g.fillOval( (int)(x-r),(int)(y-r),@*r ,2*r );
