@@ -107,6 +107,7 @@ public class Enemy{
       return dead;
    }
    
+   
    public void explode(double x , double y){
       if(rank >1){
          int amount = 0;
@@ -135,6 +136,9 @@ public class Enemy{
    public void hit(){
       health--;
       if(health <= 0 ) {dead = true ;}
+      hit = true ;
+      hitTimer = System.nanoTime();
+      
    }
    
    public void update(){
@@ -151,15 +155,24 @@ public class Enemy{
       if(x > GamePanel.WIDTH -r  && dx > 0) dx = -dx ;
       if(y > GamePanel.HEIGHT - r && dy > 0 ) dy = -dy ;
       
+      if(hit){
+         long elapsed = (System.nanoTime() - hitTimer)/1000000;
+         if(elapsed > 50){
+         }
+      }
+      
    }
    
    public void draw(Graphics2D g){
-      g.setColor(color1);
-      g.fillOval( (int)(x-r),(int)(y-r),@*r ,2*r );
-      g.setStroke(new BasicStroke(3));
-      g.setColor(color1.darker());
-      g.drawOval( (int)(x-r),(int)(y-r),@*r ,2*r );
-       g.setStroke(new BasicStroke(1));
+      if (hit){
+      }else{
+          g.setColor(color1);
+          g.fillOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+          g.setStroke(new BasicStroke(3));
+          g.setColor(color1.darker());
+          g.drawOval( (int)(x-r),(int)(y-r),@*r ,2*r );
+          g.setStroke(new BasicStroke(1));
+      }
    }
    
    
