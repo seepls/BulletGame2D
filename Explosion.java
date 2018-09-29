@@ -13,7 +13,7 @@ public class Explosion{
   }
   
  public void update(){
-   r++;
+   r+=2; // move the circle outward faster 
    if(r>= maxRadius){
      return true;
    }
