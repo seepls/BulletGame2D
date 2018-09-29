@@ -23,6 +23,7 @@ public static Player player ;
 public static ArrayList <Bullet> bullets ;
 public static ArrayList<Enemy> enemies;
 public static ArrayList<PowerUp> powerups;
+public static ArrayList<Explosion> explosion ;
   
   
 private long waveStartTimer ;
@@ -59,6 +60,8 @@ public void run(){
   bullets = new ArrayList<Bullet>();
   enemies = new ArrayList<Enemy>();
   powerups = new ArrayList<PowerUp>();
+  explosions = new ArrayList<Explosion>();
+  
  
   waveStartTimer = 0 ;
   waveStartTimerDiff = 0 ;
@@ -138,16 +141,27 @@ for( int i = 0 ; i < enemies.size() ; i++){
   
 }
   
+
+  
   //powerup update 
   for(int i = 0 ; i <powerups.size() ; i++){
     boolean remove = powerups.get(i).update();
      if ( remove){
        powerups.remove(i);
-       i--;
-       
+       i--;    
      }
-    
   }
+  
+  // explosion update 
+  
+  for(int i =0 ; i <explosions.size() ;i++){
+    boolean remove explosions.get(i).update();
+    if(remove){
+      explosions.remove(i);
+      i--;    
+    }
+  }
+  
   
   //bullet enemy collison 
   for(int i = 0 ; i < bullet.size() ;i++){
@@ -191,6 +205,9 @@ for( int i = 0 ; i < enemies.size() ; i++){
       enemies.remove(i);
       i--;
       e.explode(e.getx() , e.gety());
+      explosions.add(new Explosion (e.getx() ,e.gety() , e.getr(), e.getr()+30));
+      
+                    
     
     }
   }
@@ -279,10 +296,13 @@ private void gameRender()
   
       // draw powerups
         for( int i = 0 ;i <powerups.size() ; i++){
-          powerups.get(i).draw(g);
-           
-
+          powerups.get(i).draw(g);           
         }
+  
+      //draw explosions 
+      for(int i =0; i <explosions.size() ;i++){
+        explosions.get(i).draw(g);
+      }
         
         //draw wavenumber
         if(waveStartTimer!=0){
