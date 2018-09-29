@@ -205,7 +205,7 @@ for( int i = 0 ; i < enemies.size() ; i++){
       enemies.remove(i);
       i--;
       e.explode(e.getx() , e.gety());
-      explosions.add(new Explosion (e.getx() ,e.gety() , e.getr(), e.getr()+30));
+      explosions.add(new Explosion (e.getx() ,e.gety() , e.getr(), e.getr()+20));
       
                     
     
