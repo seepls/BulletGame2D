@@ -265,7 +265,9 @@ for( int i = 0 ; i < enemies.size() ; i++){
         }
         if(type == 4){
           slowDownTimer = System.nanoTime();
-          
+          for(int j = 0 ;j<enemies.size();j++){
+            enemies.get(j).setSlow(true );
+          }
           
         }
         powerups.remove(i);
@@ -279,6 +281,10 @@ for( int i = 0 ; i < enemies.size() ; i++){
       slowDownTimerDiff (System.nanoTime() - slowDownTimer)/1000000;
       if(slowDownTimerDiff > slowDownLength){
         slowDownTimer = 0 ;
+        for(int j = 0 ;j<enemies.size();j++){
+            enemies.get(j).setSlow(false );
+          }
+          
       }
   }
   
@@ -296,6 +302,12 @@ private void gameRender()
         g.drawString("TEST",10,10); // test loops to check functionality 
         g.drawString(" num bullets " + bullets.size(),10,20); // this is awesome you can actually check how many bullets on screen 
         */
+  
+        //draw slowdown screen 
+      if(slowDownTimer != 0){
+        g.setColor(new Color(255 ,255 ,255 ,64));
+        g.fillRect(0,0, WIDTH , HEIGHT );
+      }
   
         // draw player
         player.draw(g);
