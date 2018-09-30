@@ -24,6 +24,7 @@ public static ArrayList <Bullet> bullets ;
 public static ArrayList<Enemy> enemies;
 public static ArrayList<PowerUp> powerups;
 public static ArrayList<Explosion> explosion ;
+public static ArrayList<Text> texts ;
   
   
 private long waveStartTimer ;
@@ -65,6 +66,7 @@ public void run(){
   enemies = new ArrayList<Enemy>();
   powerups = new ArrayList<PowerUp>();
   explosions = new ArrayList<Explosion>();
+  lists = new ArrayList<List>();
   
  
   waveStartTimer = 0 ;
@@ -166,6 +168,16 @@ for( int i = 0 ; i < enemies.size() ; i++){
     }
   }
   
+  //text update 
+   for(int i = 0 ;i < texts.size() ;i++){
+     boolean remove  = texts.get(i).update();
+     if(remove){
+       texts.remove(i);
+       i--;
+     }
+     
+   }
+  
   
   //bullet enemy collison 
   for(int i = 0 ; i < bullet.size() ;i++){
@@ -256,18 +268,24 @@ for( int i = 0 ; i < enemies.size() ; i++){
         
         int type = p.getType() ;
         if(type == 1){
-        }player.gainLife();
+          player.gainLife();
+           texts.add(new Text(player.getx() ,player.gety() , 2000,"extra life" ));
+        }
         if(type==2){
           player.increasePower(1);
+           texts.add(new Text(player.getx() ,player.gety() , 2000,"power!" ));
         }
         if (type == 3){
           player.increasePower(2);
+           texts.add(new Text(player.getx() ,player.gety() , 2000,"DOuble Power " ));
         }
         if(type == 4){
           slowDownTimer = System.nanoTime();
           for(int j = 0 ;j<enemies.size();j++){
             enemies.get(j).setSlow(true );
           }
+          texts.add(new Text(player.getx() ,player.gety() , 2000,"slow DOWn" ));
+          
           
         }
         powerups.remove(i);
@@ -331,7 +349,13 @@ private void gameRender()
       for(int i =0; i <explosions.size() ;i++){
         explosions.get(i).draw(g);
       }
-        
+       
+      //draw text 
+  for(int i = 0 ; i<texts.size();i++){
+    texts.get(i).draw(g);
+    
+  }
+  
         //draw wavenumber
         if(waveStartTimer!=0){
           g.setFont(new Font("Century Gothic" ,Font.PLAIN ,18) );
