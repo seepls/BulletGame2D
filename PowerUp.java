@@ -14,6 +14,8 @@ public class PowerUp{
   //1 = +1 to life 
   //2  = +1 power
   //3 = +2 power
+  // 4 --slow down time 
+  
   
   //CONSTRUCTOR
   
@@ -26,11 +28,20 @@ public class PowerUp{
   color1 = Color.PINK ;
     r= 3 ;
   }
-  if(type == 2 || type == 3 ){
+  if(type == 2 ){
   color1 = Color.YELLOW ;
     r = 4 ;
   
   }
+    if(type==3){
+      color1 = Color.YELLOW ;
+      r =5 ;  
+    }
+    
+    if(type == 4){
+      color1 = Color.WHITE ;
+      r =3 ;
+    }
   
   }
   
