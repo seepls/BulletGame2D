@@ -31,6 +31,10 @@ private long waveStartTimerDiff ;
 private int waveNumber ;
 private boolean waveStart;
 private int waveDelay =1500 ;
+private long slowDownTimer ;
+private long slowDownTimerDiff ;
+private int slowDownLength = 6000;
+
 
 
 public GamePanel(){
@@ -197,7 +201,8 @@ for( int i = 0 ; i < enemies.size() ; i++){
       if(rand < 0.001)powerups.add(new PowerUp(1,e.getx(),e.gety()));
        else if(rand < 0.02 ){powerups.add( new PowerUp(3, e.getx() , e.gety()));}
       else if( rand < 0.120){ powerups.add( new PowerUp(2 , e.getx() , e.gety()));}
-      else powerups.add(new PowerUp(1,e.getx(),e.gety()));
+      else if(rand<0.130){powerups.add( new PowerUp(4 , e.getx() , e.gety()));}
+      else powerups.add(new PowerUp(4,e.getx(),e.gety()));
       
       player.addScore(e.getType() + e.getRank());
       
@@ -257,14 +262,25 @@ for( int i = 0 ; i < enemies.size() ; i++){
         }
         if (type == 3){
           player.increasePower(2);
-          {
+        }
+        if(type == 4){
+          slowDownTimer = System.nanoTime();
+          
+          
+        }
         powerups.remove(i);
         i-- ;
         
       }
     
   }
-      
+   //slowdown update
+  if(slowDownTimer != 0){
+      slowDownTimerDiff (System.nanoTime() - slowDownTimer)/1000000;
+      if(slowDownTimerDiff > slowDownLength){
+        slowDownTimer = 0 ;
+      }
+  }
   
   
 
@@ -341,6 +357,12 @@ private void gameRender()
       g.setFont(new Font("CENTURY GOTHIC",Font.PLAIN, 14));
       g.drawString("Score :" + player.getScore() ,WIDTH- 100,10 );
   
+      //draw slow down meter
+    if(slowDownTimer!=0 ){
+      g.setColor (Color.WHITE);
+      g.drawRect(20,60,100,8);
+      g.fillRect(20,60 , (int)(100 - 100.0* slowDownTimerDiff/slowDownLength) , 8);
+    }
         
 
       
