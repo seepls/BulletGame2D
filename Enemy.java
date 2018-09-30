@@ -22,6 +22,8 @@ public class Enemy{
    private boolean hit ; 
    private long hitTimer ; 
    
+   private boolean slow ;
+   
    
    
    //CONSTRUCTOR 
@@ -146,6 +148,9 @@ public class Enemy{
    public int getType(){return type;}
    public int getRank(){return rank ;}
    
+   public void setSlow(boolean b){slow = b ;}
+   
+   
    public boolean isDead(){
       return dead;
    }
@@ -192,6 +197,14 @@ public class Enemy{
    }
    
    public void update(){
+      if(slow){
+         x+= dx *0.3 ;
+         y+= dy*0.3 ;
+      }else {
+         x +=dx ;
+         y += dy ;
+      }
+      
       x+= dx ;
       y+= dy ;
       if(!ready){
